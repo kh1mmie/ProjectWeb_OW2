@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tab -->
+    <link rel="icon" type="image/png" href="assets/Overwatch_logo---Copy.png">
+    <title>Overwatch 2</title>
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- tailwindcss -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,900;1,600&family=Zain:wght@200;300;400;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- tailwindcss config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sosudlime: '#ED6516',
+                        grey: '#ECE8E3',
+                        textg: '#c2c5d0',
+                        textb: '#1d253a',
+                        blue: '#059ffa',
+                        gmain: '#ebeff4'
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .poppins-black {
+            font-family: "Poppins", sans-serif;
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        .poppins-semibold-italic {
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .zain-bold {
+            font-family: "Zain", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .zain-extrabold {
+            font-family: "Zain", sans-serif;
+            font-weight: 800;
+            font-style: normal;
+        }
+
+        .button-container:hover .hover-div {
+            display: block;
+        }
+
+        .dropdown-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.1s ease, visibility 0.1s ease;
+        }
+
+        .dropdown-content.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .active-hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ########### navbar ########### -->
+
+    <nav class="w-[100%] flex justify-center fixed z-50 mx-auto">
+        <div
+            class="w-[100%] h-[72px] bg-white/80 absolute top-0 flex justify-between lg:pr-3 backdrop-blur-sm whitespace-nowrap">
+            <div class="flex">
+                <button class="bg-white h-full w-[148px]">
+                    <div class="w-full h-full flex justify-center items-center relative">
+                        <img src="./assets/Blizzard_Logo.png" alt="Blizzard_Logo" class="w-[55%] ">
+                        <i class="fa-solid fa-angle-down text-gray-500 text-[12px] absolute right-5 "></i>
+                    </div>
+                </button>
+                <div class="h-[72px] flex justify-center items-center ml-6 mr-4">
+                    <div class="h-[40px] w-[40px] bg-cover bg-center "
+                        style="background-image: url(./assets/Overwatch_logo.png)">
+                    </div>
+                </div>
+
+                <!-- ############ Navbar Responsive ############ -->
+                <div id="navbar"
+                    class="bg-gmain fixed w-screen sm:w-[400px] h-screen flex flex-col lg:hidden right-0 zain-bold text-[25px] z-50 gap-2">
+                    <div class="flex justify-between">
+                        <div class="h-[72px] flex justify-start items-center ml-6 mr-4 pl-2">
+                            <div class="h-[40px] w-[40px] bg-cover bg-center "
+                                style="background-image: url(./assets/Overwatch_logo.png)">
+                            </div>
+                        </div>
+                        <div class="h-full flex justify-end items-center">
+                            <button id="closeNavbar"
+                                class="h-[50px] w-[50px] rounded-[8px] hover:bg-black/10 hover:shadow-lg transition transform duration-300 flex justify-center items-center text-gray-500 hover:text-gray-900">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="px-3 flex justify-between w-full hover:bg-black/10  hover:shadow-lg relative transition transform duration-300">
+                        <button class="text-start px-3 pt-1 h-[50px] ">
+                            Game Info
+                        </button>
+                        <div class="h-full flex justify-end items-center">
+                            <i class="fa-solid fa-angle-down text-gray-500 text-[12px]"></i>
+                        </div>
+                    </div>
+                    <div class="pl-3">
+                        <button
+                            class="text-start px-3 pt-1 h-[50px] w-full hover:bg-black/10  hover:shadow-lg relative transition transform duration-300">
+                            Heroes</button>
+                    </div>
+                    <div class="pl-3">
+                        <button
+                            class="text-start px-3 pt-1 h-[50px] w-full hover:bg-black/10  hover:shadow-lg relative transition transform duration-300">
+                            Season</button>
+                    </div>
+                    <div class="pl-3">
+                        <button
+                            class="text-start px-3 pt-1 h-[50px] w-full hover:bg-black/10  hover:shadow-lg relative transition transform duration-300">
+                            News</button>
+                    </div>
+                    <div
+                        class="px-3 flex justify-between w-full hover:bg-black/10  hover:shadow-lg relative transition transform duration-300">
+                        <button class="text-start px-3 pt-1 h-[50px] ">
+                            Community
+                        </button>
+                        <div class="h-full flex justify-end items-center">
+                            <i class="fa-solid fa-angle-down text-gray-500 text-[12px]"></i>
+                        </div>
+                    </div>
+                    <div
+                        class="px-3 flex justify-between w-full hover:bg-black/10  hover:shadow-lg relative transition transform duration-300">
+                        <button class="text-start px-3 pt-1 h-[50px] ">
+                            Shop
+                        </button>
+                        <div class="h-full flex justify-end items-center">
+                            <i class="fa-solid fa-angle-down text-gray-500 text-[12px]"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ####END#### -->
+
+
+                <div
+                    class="relative lg:h-[72px] flex flex-row justify-center items-center zain-bold text-[25px] max-lg:hidden">
+                    <!-- Game Info Dropdown -->
+                    <div class="relative button-container">
+                        <button id="gameInfoButton" data-target="gameInfoDropdown"
+                            class="px-3 pt-1 h-[50px] rounded-[8px] hover:bg-black/10 hover:shadow-lg transition transform duration-300">
+                            Game Info
+                            <i class="fa-solid fa-angle-down text-gray-500 text-[12px]"></i>
+                        </button>
+                        <div id="gameInfoDropdown"
+                            class="dropdown-content w-[300px] left-0 flex-col absolute bottom-[-182px] transition transform duration-300">
+                            <div class="w-full h-[5px] bg-sosudlime rounded-t-full  transition transform duration-300">
+                            </div>
+                            <div class="flex flex-col rounded-b-[5px] justify-start bg-white p-3">
+                                <button
+                                    class="px-3 pt-1 h-[50px] text-start rounded-[5px] hover:bg-black/10 transition transform duration-300">Overview</button>
+                                <button
+                                    class="px-3 pt-1 h-[50px] text-start rounded-[5px] hover:bg-black/10 transition transform duration-300">Media</button>
+                                <button
+                                    class="px-3 pt-1 h-[50px] text-start rounded-[5px] hover:bg-black/10 transition transform duration-300">Patch
+                                    Notes</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative inline-block button-container">
+                        <button
+                            class="px-3 pt-1 h-[50px] rounded-[8px] hover:bg-black/10  hover:shadow-lg relative transition transform duration-300">
+                            Heroes
+                        </button>
+                        <div
+                            class="w-full left-0 h-[5px] bg-sosudlime absolute bottom-[-8px] rounded-full hidden hover-div transition transform duration-300">
+                        </div>
+                    </div>
+                    <div class="relative inline-block button-container">
+                        <button
+                            class="px-3 pt-1 h-[50px] rounded-[8px] hover:bg-black/10 hover:shadow-lg transition transform duration-300">Season</button>
+                        <div
+                            class="w-full left-0 h-[5px] bg-sosudlime absolute bottom-[-8px] rounded-full hidden hover-div transition transform duration-300">
+                        </div>
+                    </div>
+                    <div class="relative inline-block button-container">
+                        <button
+                            class="px-3 pt-1 h-[50px] rounded-[8px] hover:bg-black/10 hover:shadow-lg transition transform duration-300">News</button>
+                        <div
+                            class="w-full left-0 h-[5px] bg-sosudlime absolute bottom-[-8px] rounded-full hidden hover-div transition transform duration-300">
+                        </div>
+                    </div>
+                    <!-- Community Dropdown -->
+                    <div class="relative button-container">
+                        <button id="communityButton" data-target="communityDropdown"
+                            class="px-3 pt-1 h-[50px] rounded-[8px] hover:bg-black/10 hover:shadow-lg transition transform duration-300">
+                            Community
+                            <i class="fa-solid fa-angle-down text-gray-500 text-[12px]"></i>
+                        </button>
+                        <div id="communityDropdown"
+                            class="dropdown-content w-[300px] left-0 flex-col absolute bottom-[-182px] transition transform duration-300">
+                            <div class="w-full h-[5px] bg-sosudlime rounded-t-full  transition transform duration-300">
+                            </div>
+                            <div class="flex flex-col rounded-b-[5px] justify-start bg-white p-3">
+                                <button
+                                    class="px-3 pt-1 h-[50px] text-start rounded-[5px] hover:bg-black/10 transition transform duration-300">Forums</button>
+                                <button
+                                    class="px-3 pt-1 h-[50px] text-start rounded-[5px] hover:bg-black/10 transition transform duration-300">Player
+                                    Profile</button>
+                                <button
+                                    class="px-3 pt-1 h-[50px] text-start rounded-[5px] hover:bg-black/10 transition transform duration-300">Overwatch
+                                    Esports 2024</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Shop Dropdown -->
+                    <div class="relative button-container">
+                        <button id="shopButton" data-target="shopDropdown"
+                            class="px-3 pt-1 h-[50px] rounded-[8px] hover:bg-black/10 hover:shadow-lg transition transform duration-300">
+                            Shop
+                            <i class="fa-solid fa-angle-down text-gray-500 text-[12px]"></i>
+                        </button>
+                        <div id="shopDropdown"
+                            class="dropdown-content w-[300px] left-0 flex-col absolute bottom-[-82px] transition transform duration-300">
+                            <div class="w-full h-[5px] bg-sosudlime rounded-t-full  transition transform duration-300">
+                            </div>
+                            <div class="flex flex-col rounded-b-[5px] justify-start bg-white p-3">
+                                <button
+                                    class="px-3 pt-1 h-[50px] text-start rounded-[5px] hover:bg-black/10 transition transform duration-300">
+                                    In-Game Content</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-1">
+                <div class="h-[72px] flex justify-center items-center">
+                    <button
+                        class="h-[50px] w-[50px] rounded-[8px] hover:bg-black/10 hover:shadow-lg transition transform duration-300 flex justify-center items-center text-gray-500 hover:text-gray-900 max-lg:hidden">
+                        <i class="fa-solid fa-magnifying-glass "></i>
+                    </button>
+                </div>
+                <div class="h-[72px] flex justify-center items-center zain-bold text-[25px] max-lg:hidden">
+                    <button class="px-3 pt-1 h-[50px]  rounded-[8px] bg-sosudlime  text-white hover:bg-orange-500  ">
+                        Play Now</button>
+                </div>
+                <!-- Menu Responsive -->
+                <div class="h-full flex justify-end items-center px-3">
+                    <button id="openNavbar"
+                        class="h-[50px] w-[50px] rounded-[8px] hover:bg-black/10 hover:shadow-lg transition transform duration-300 flex justify-center items-center text-gray-500 hover:text-gray-900 lg:hidden">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ########### header content ########### -->
+
+    <div class="w-full h-[800px] relative flex justify-center items-center whitespace-nowrap text-white px-0 mx-0">
+        <div class="z-10 w-[360px] md:w-[600px] absolute flex flex-col justify-center items-center gap-6 lg:gap-8">
+            <img src="./assets/Overwatch2_Logo.png">
+            <div class="poppins-semibold-italic text-[25px] md:text-[40px]">A FUTURE WORTH FIGHTING FOR</div>
+            <div class="zain-bold text-[20px] md:text-[25px]">TEAM-BASED ACTION • FREE TO PLAY</div>
+            <div class="bg-clip-padding p-1 border-2 rounded-[8px] ">
+                <button
+                    class="px-6 h-[50px] md:h-[72px] bg-sosudlime hover:bg-white hover:text-sosudlime rounded-[5px] zain-extrabold text-[16px] md:text-[25px] pt-1 transition transform duration-300">
+                    PLAY FOR
+                    FREE</button>
+            </div>
+        </div>
+        <video autoplay muted loop class="w-full h-[800px] object-cover z-0">
+            <source src="./assets/F2P_Trailer.mp4" type="video/mp4">
+        </video>
+        </button>
+    </div>
+
+    <!-- ########### Content THE LATEST ########### -->
+
+    <div class=" w-full  bg-cover bg-center flex justify-center whitespace-nowrap"
+        style="background-image: url(./assets/960_Silver_Background.webp)">
+        <div class="w-[85%] lg:w-[80%]">
+            <div class=" flex justify-between items-center h-[140px] w-full flex-wrap">
+                <div class="poppins-black text-[24px] lg:text-[45px] drop-shadow-2xl">THE LATEST</div>
+                <button class="zain-extrabold text-[16px] md:text-[20px] hover:text-gray-600">GO TO NEWS PAGE <i
+                        class="fa-solid fa-up-right-from-square px-2"></i>
+                </button>
+            </div>
+            <div class="overflow-x-auto justify-center">
+                <div class=" flex justify-between gap-3 mb-10 w-full ">
+                    <div class="w-[480px] lg:w-[500px]">
+                        <button class="h-[300px] md:h-[200px] w-[480px] overflow-hidden ">
+                            <img src="./assets/1.png"
+                                class="object-cover w-full h-full md:h-[200px] hover:scale-125 transition transform duration-300">
+                        </button>
+                        <div class="zain-extrabold text-[16px] lg:text-[20px] flex items-center gap-3 w-full mt-2">
+                            <div class="text-sosudlime">ESPORTS</div>
+                            <div class="h-[20px] w-[2px] bg-gray-300 rounded-full"></div>
+                            <div class="">2 weeds ago</div>
+                        </div>
+                        <button
+                            class="text-wrap zain-extrabold leading-10  text-[20px] lg:text-[40px] flex w-full text-start ">
+                            Unleash Your Inner Demon with Reinhardt's Mythic Weapon
+                        </button>
+                    </div>
+                    <div class="w-[480px] lg:w-[500px]">
+                        <button class="h-[300px] md:h-[200px] w-[480px] overflow-hidden">
+                            <img src="./assets/2.webp"
+                                class="object-cover w-full h-full md:h-[200px] hover:scale-125 transition transform duration-300">
+                        </button>
+                        <div class="zain-extrabold text-[16px] lg:text-[20px] flex items-center gap-3 w-full mt-2">
+                            <div class="text-sosudlime">GAME UPDATES</div>
+                            <div class="h-[20px] w-[2px] bg-gray-300 rounded-full"></div>
+                            <div class="">3 weeds ago</div>
+                        </div>
+                        <button
+                            class="text-wrap zain-extrabold leading-10 text-[20px] lg:text-[40px] flex w-full text-start ">
+                            Relive Your Overwatch Glory!
+                        </button>
+                    </div>
+                    <div class="w-[480px] lg:w-[500px]">
+                        <button class="h-[300px] md:h-[200px] w-[480px] overflow-hidden">
+                            <img src="./assets/3.webp"
+                                class="object-cover w-full h-full md:h-[200px] hover:scale-125 transition transform duration-300">
+                        </button>
+                        <div class="zain-extrabold text-[16px] lg:text-[20px] flex items-center gap-3 w-full mt-2">
+                            <div class="text-sosudlime">ESPORTS</div>
+                            <div class="h-[20px] w-[2px] bg-gray-300 rounded-full"></div>
+                            <div class="">2 weeds ago</div>
+                        </div>
+                        <button
+                            class="text-wrap zain-extrabold leading-10  text-[20px] lg:text-[40px] flex w-full text-start ">
+                            Getting Creative with the Community Crafted Mode
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ########### CONSOLE LAUNCH ########### -->
+
+    <div class="w-full h-[600px] flex justify-center items-center overflow-hidden bg-cover bg-center whitespace-nowrap"
+        style="background-image: url(./assets/Desktop_Outro_Sky.webp)">
+        <div class="w-[85%] lg:w-[80%] h-[600px] flex justify-start text-white relative">
+            <div class="w-[640px] md:w-[40%] h-[600px] flex flex-col justify-center z-10">
+                <div class="poppins-black text-[64px] lg:text-[100px] h-[60px] lg:h-[100px] drop-shadow-2xl">CONSOLE
+                </div>
+                <div class="poppins-black text-[64px] lg:text-[100px] h-[60px] mt-[10px] lg:h-[100px] drop-shadow-2xl">
+                    LAUNCH</div>
+                <div class="poppins-semibold-italic text-[16px] lg:text-[20px] mt-[50px] h-[100px] ">
+                    The future is worth fightingfor. Join us!
+                </div>
+                <div class="">
+                    <button
+                        class="max-sm:w-full px-6 h-[72px] sm:w-[200px] bg-sosudlime text-white hover:bg-white hover:text-sosudlime  rounded-[5px] zain-extrabold text-[20px] lg:text-[25px] pt-1 transition transform duration-300">
+                        PLAY NOW</button>
+                </div>
+            </div>
+            <div class="absolute right-[-70px] ">
+                <img src="./assets/Desktop_Outro_Characters.webp" class="h-[650px] min-w-min drop-shadow-2xl">
+            </div>
+        </div>
+    </div>
+
+    <!-- ########### WE ARE OVERWATCH 2 ########### -->
+
+    <div class=" w-full h-auto md:h-[900px] lg:h-[680px] flex justify-center items-center overflow-hidden bg-cover bg-center whitespace-nowrap"
+        style="background-image: url(./assets/960_Silver_Background.webp)">
+        <div class=" w-[85%] lg:w-[80%] h-[700px] flex justify-start items-center text-textb relative">
+            <div class="w-full lg:w-[45%] h-[800px] lg:h-full flex flex-col justify-center max-lg:mb-6">
+                <div
+                    class="poppins-black text-[40px] md:text-[56px] lg:text-[80px] drop-shadow-2xl whitespace-normal md:whitespace-nowrap lg:whitespace-normal lg:leading-[80px] z-30">
+                    WE ARE OVERWATCH2</div>
+                <div
+                    class="poppins-semibold-italic text-[16px] lg:text-[20px] md:mt-2 lg:mt-[30px] lg:mb-[100px] lg:h-[150px] text-wrap z-30">
+                    We are
+                    excited to introduce
+                    the new Overwatch Esports program and the Overwatch Champions Series. Watch our video update
+                    and head to our blog to learn more about what is next for Overwatch Esports in 2024.</div>
+                <button
+                    class="max-sm:w-full px-6 h-[72px] w-[230px] bg-blue text-white hover:bg-white hover:text-blue rounded-[5px] zain-extrabold text-[20px] lg:text-[25px] pt-1 transition transform duration-300 max-lg:mt-6 z-30">
+                    LEARN THE GAME</button>
+            <!-- Video -->
+                <div class="flex justify-center items-center lg:absolute right-[-35px] z-10 max-lg:mt-[50px]">
+                    <video autoplay muted loop class=" object-cover w-full lg:w-[550px] xl:w-[800px]">
+                        <source src="./assets/F2P_Trailer.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <!-- Logo -->
+            <div class="absolute left-[-50px] w-[700px] h-full bg-cover bg-center z-0 opacity-10 "
+                style="background-image: url(./assets/Overwatch_Logo.png)">
+            </div>
+        </div>
+    </div>
+
+    <!-- ########### YOUR HEROES ########### -->
+
+    <div class=" w-full h-auto md:h-[900px] lg:h-[600px] flex justify-center items-center overflow-hidden bg-cover bg-center whitespace-nowrap "
+        style="background-image: url(./assets/2600_Sky_v2.webp)">
+        <div class=" w-[85%] lg:w-[80%] h-[700px] flex justify-end text-white relative">
+            <div class="w-full lg:w-[700px] absolute lg:left-[-40px] top-[289px] sm:top-[200px] md:top-[150px] lg:top-[80px] ">
+                <img src="./assets/Damage_Heroes_Desktop.webp" class=" drop-shadow-2xl ">
+            </div>
+            <div class="w-full lg:w-[45%] h-[900px] lg:h-[700px] flex flex-col lg:justify-center z-10 max-md:mt-9">
+                <div
+                    class="poppins-black text-[40px] md:text-[56px] lg:text-[80px] drop-shadow-2xl whitespace-normal md:whitespace-nowrap lg:whitespace-normal lg:leading-[80px]">
+                    YOUR HEROES</div>
+                <div
+                    class="poppins-semibold-italic text-[16px] lg:text-[20px] md:mt-2 lg:mt-[30px] lg:mb-[80px] lg:h-[150px] text-wrap">
+                    Damage heroes seek out,
+                    engage, and obliterate the enemy with wide-ranging tools, abilities, and play styles. Fearsome
+                    but fragile, these heroes require backup to survive.</div>
+                <button
+                    class="max-sm:w-full px-6 h-[72px] w-[250px] bg-sosudlime text-white hover:bg-white hover:text-sosudlime  rounded-[5px] zain-extrabold text-[20px] lg:text-[25px] pt-1 transition transform duration-300 max-lg:mt-6">
+                    VIEW ALL HEROES</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ########### YOUR MAPS ########### -->
+
+    <div class="w-full h-auto md:h-[900px] lg:h-[600px] flex justify-center items-center overflow-hidden bg-cover bg-center whitespace-nowrap"
+        style="background-image: url(./assets/960_Flashpoint.jpg)">
+        <div class="w-[85%] lg:w-[80%] h-full flex justify-start items-center text-white relative">
+            <div class="w-full lg:w-[45%] h-[650px] lg:h-full flex flex-col justify-center max-lg:mb-6">
+                <div
+                    class="poppins-black text-[40px] md:text-[56px] lg:text-[80px] drop-shadow-2xl whitespace-normal md:whitespace-nowrap lg:whitespace-normal lg:leading-[80px] z-30">
+                    YOUR MAPS
+                </div>
+                <div
+                    class="poppins-semibold-italic text-[16px] lg:text-[20px] md:mt-2 lg:mt-[30px] lg:mb-[100px] lg:h-[150px] text-wrap z-30">
+                    Travel the world and fight for the future in diverse locations around the globe. From the
+                    technological marvels of Busan to the snow-dusted streets of Toronto, every map has objectives to
+                    accomplish, secrets to uncover, and strategies to explore.
+                </div>
+                <button
+                    class="max-sm:w-full px-6 h-[72px] w-[230px] bg-blue text-white hover:bg-white hover:text-blue rounded-[5px] zain-extrabold text-[20px] lg:text-[25px] pt-1 transition transform duration-300 max-lg:mt-6 z-30">
+                    VIEW ALL MAPS
+                </button>
+                <div class="flex justify-center items-center lg:absolute lg:right-[-35px] z-10 max-lg:mt-[50px]">
+                    <img src="./assets/Eichenwalde_Deathmatch.avif"
+                        class="object-cover w-full lg:w-[550px] xl:w-[800px] drop-shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ########### Stay Connected ########### -->
+
+    <div class=" w-[full] h-auto lg:h-[80px] pt-[20px] flex max-lg:justify-center items-center overflow-hidden  whitespace-nowrap"
+        style="background: radial-gradient( #353e62, #242a42);">
+        <div class="w-[80%] flex flex-col lg:flex-row ">
+            <!-- First row: Careers, About, Support, Contact Us, Press, API -->
+            <div
+                class=" w-full flex justify-around items-center text-white relative lg:mb-5 poppins-semibold-italic text-[16px] lg:text-[20px]">
+                <div class="flex gap-x-3 max-sm:flex-col max-lg:flex-wrap justify-center items-center">
+                    <div class="relative inline-block button-container">
+                        <button
+                            class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10  hover:shadow-lg relative transition transform duration-300">
+                            Careers
+                        </button>
+                    </div>
+                    <div class="relative inline-block button-container">
+                        <button
+                            class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10  hover:shadow-lg relative transition transform duration-300">
+                            About
+                        </button>
+                    </div>
+                    <div class="relative inline-block button-container">
+                        <button
+                            class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10  hover:shadow-lg relative transition transform duration-300">
+                            Support
+                        </button>
+                    </div>
+                    <div class="relative inline-block button-container">
+                        <button
+                            class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10  hover:shadow-lg relative transition transform duration-300">
+                            Contact Us
+                        </button>
+                    </div>
+                    <div class="relative inline-block button-container">
+                        <button
+                            class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10  hover:shadow-lg relative transition transform duration-300">
+                            Press
+                        </button>
+                    </div>
+                    <div class="relative inline-block button-container">
+                        <button
+                            class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10  hover:shadow-lg relative transition transform duration-300">
+                            API
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Second row: English button -->
+            <div
+                class="w-full flex justify-center items-center lg:w-auto text-white relative poppins-semibold-italic text-[16px] lg:text-[20px] mb-5 ">
+                <div class="relative inline-block button-container">
+                    <button
+                        class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10  hover:shadow-lg relative transition transform duration-300">
+                        <i class="fa-solid fa-globe pr-2"></i> English(US)<i
+                            class="fa-solid fa-angle-down text-gray-500 text-[12px] pl-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ########### Footer ########### -->
+
+    <div class=" w-full h-[400px] flex flex-col justify-around items-center overflow-hidden "
+        style="background: radial-gradient( #232a41, #121524);">
+        <div class="flex gap-x-8 text-[30px] md:text-[35px] lg:text-[40px] text-textg">
+            <button><i class="fa-brands fa-facebook hover:text-white"></i></button>
+            <button><i class="fa-brands fa-youtube hover:text-white"></i></button>
+            <button><i class="fa-brands fa-instagram hover:text-white"></i></button>
+            <button><i class="fa-brands fa-tiktok hover:text-white"></i></button>
+            <button><i class="fa-brands fa-discord hover:text-white"></i></button>
+        </div>
+        <div class="flex flex-col justify-center items-center w-[85%]">
+            <img src="./assets/Overwatch2_Logo.png" class="w-[600px] lg:w-[700px] drop-shadow-2xl pb-2">
+            <div class="text-gray-500 w-[85%] items-center text-center">
+                <div class="items-center justify-center text-center">
+                    ©2024 Blizzard Entertainment, Inc.</div>
+                <div class="">
+                    All trademarks referenced herein are the properties of their respective owners.</div>
+            </div>
+        </div>
+
+        <div
+            class="w-[80%] flex flex-wrap gap-3 poppins-semibold-italic text-[16px] text-textg justify-center whitespace-nowrap">
+            <!-- Row 1: Three elements -->
+            <div class="flex flex-row gap-3">
+                <div class="relative inline-block button-container w-full lg:w-auto">
+                    <button
+                        class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10 hover:shadow-lg transition duration-300">
+                        Privacy
+                    </button>
+                </div>
+                <div class="relative inline-block button-container w-full lg:w-auto">
+                    <button
+                        class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10 hover:shadow-lg transition duration-300">
+                        Legal
+                    </button>
+                </div>
+                <div class="relative inline-block button-container w-full lg:w-auto">
+                    <button
+                        class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10 hover:shadow-lg transition duration-300">
+                        Terms
+                    </button>
+                </div>
+            </div>
+            <!-- Row 2: Two elements -->
+            <div class="flex flex-row gap-3">
+                <div class="relative inline-block button-container w-full lg:w-auto">
+                    <button
+                        class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10 hover:shadow-lg transition duration-300">
+                        Cookie Policy
+                    </button>
+                </div>
+                <div class="relative inline-block button-container w-full lg:w-auto">
+                    <button
+                        class="px-4 pt-1 h-[50px] rounded-[8px] hover:bg-gray-200/10 hover:shadow-lg transition duration-300">
+                        Cookie Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.button-container button').forEach(button => {
+                const dropdownId = button.getAttribute('data-target');
+                const dropdown = document.getElementById(dropdownId);
+                const hoverDiv = button.nextElementSibling;
+
+                if (!dropdown || !hoverDiv) return; // Check if elements exist
+
+                let hideTimeout;
+
+                function showDropdown() {
+                    clearTimeout(hideTimeout);
+                    hoverDiv.classList.remove('hidden');
+                    dropdown.classList.add('show');
+                    button.classList.add('active-hover');
+                }
+
+                function hideDropdown() {
+                    hoverDiv.classList.add('hidden');
+                    dropdown.classList.remove('show');
+                    button.classList.remove('active-hover');
+                }
+
+                button.addEventListener('mouseenter', showDropdown);
+                button.addEventListener('mouseleave', function () {
+                    hideTimeout = setTimeout(function () {
+                        if (!dropdown.matches(':hover')) {
+                            hideDropdown();
+                        }
+                    }, 100);
+                });
+
+                dropdown.addEventListener('mouseenter', showDropdown);
+                dropdown.addEventListener('mouseleave', function () {
+                    hideTimeout = setTimeout(function () {
+                        if (!button.matches(':hover')) {
+                            hideDropdown();
+                        }
+                    }, 100);
+                });
+            });
+        });
+
+        // Navbar Function 
+        const navbar = document.getElementById('navbar');
+        const openNavbarBtn = document.getElementById('openNavbar');
+        const closeNavbarBtn = document.getElementById('closeNavbar');
+        // Function to toggle navbar visibility
+        function toggleNavbar(show) {
+            navbar.style.display = show ? 'flex' : 'none';
+        }
+        // Show navbar when clicking the bars button
+        openNavbarBtn.addEventListener('click', function () {
+            toggleNavbar(true);
+        });
+        // Hide navbar when clicking the xmark button
+        closeNavbarBtn.addEventListener('click', function () {
+            toggleNavbar(false);
+        });
+    </script>
+
+</body>
+
+</html>
